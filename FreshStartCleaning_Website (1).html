@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fresh Start Cleaning | Charlotte, NC</title>
+<meta name="description" content="Professional residential cleaning services in Charlotte, NC. Recurring cleans, move-out cleans, and deep cleans. Insured. Book a free quote today.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ── TOKENS ───────────────────────────────────────── */
+  :root {
+    --teal:        #1A9E72;
+    --teal-dark:   #127A56;
+    --teal-light:  #E6F5EF;
+    --teal-mid:    #4DBFA0;
+    --cream:       #FAF8F4;
+    --cream-dark:  #F0EDE6;
+    --ink:         #1C1C1A;
+    --ink-mid:     #4A4A47;
+    --ink-light:   #7A7A76;
+    --white:       #FFFFFF;
+    --radius:      12px;
+    --radius-lg:   20px;
+    --shadow:      0 2px 16px rgba(0,0,0,.07);
+    --shadow-lg:   0 8px 40px rgba(0,0,0,.12);
+    --serif:       'DM Serif Display', Georgia, serif;
+    --sans:        'Inter', system-ui, sans-serif;
+  }
+
+  /* ── RESET ────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ── LAYOUT ───────────────────────────────────────── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .section { padding: 80px 0; }
+  .section-sm { padding: 48px 0; }
+
+  /* ── NAV ──────────────────────────────────────────── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--cream-dark);
+    padding: 0 24px;
+  }
+  .nav-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    font-family: var(--serif); font-size: 1.2rem; color: var(--ink);
+  }
+  .nav-logo-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--teal); display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .nav-links {
+    display: flex; align-items: center; gap: 32px; list-style: none;
+  }
+  .nav-links a {
+    font-size: 14px; font-weight: 500; color: var(--ink-mid);
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 8px; padding: 12px 24px; border-radius: 50px;
+    font-family: var(--sans); font-size: 15px; font-weight: 500;
+    cursor: pointer; border: none; transition: all .2s; text-decoration: none;
+  }
+  .btn-primary {
+    background: var(--teal); color: var(--white);
+  }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(26,158,114,.3); }
+  .btn-outline {
+    background: transparent; color: var(--teal);
+    border: 1.5px solid var(--teal);
+  }
+  .btn-outline:hover { background: var(--teal-light); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; }
+  .nav-cta { font-size: 14px; padding: 8px 20px; }
+
+  /* ── HERO ─────────────────────────────────────────── */
+  .hero {
+    background: var(--cream);
+    padding: 100px 24px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -120px; right: -120px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,158,114,.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--teal-light); color: var(--teal);
+    font-size: 13px; font-weight: 600; letter-spacing: .04em;
+    padding: 6px 14px; border-radius: 50px; margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  .hero-eyebrow::before { content: '✦'; font-size: 10px; }
+  .hero h1 {
+    font-family: var(--serif); font-size: clamp(2.4rem, 4vw, 3.4rem);
+    line-height: 1.15; color: var(--ink); margin-bottom: 20px;
+  }
+  .hero h1 em { color: var(--teal); font-style: italic; }
+  .hero-sub {
+    font-size: 17px; color: var(--ink-mid); line-height: 1.7;
+    margin-bottom: 32px; max-width: 480px;
+  }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .hero-trust {
+    display: flex; align-items: center; gap: 8px;
+    margin-top: 32px; font-size: 13px; color: var(--ink-light);
+  }
+  .hero-trust-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--ink-light); }
+  .hero-visual {
+    background: var(--white); border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg); padding: 28px;
+    border: 1px solid var(--cream-dark);
+  }
+  .hero-card-title {
+    font-size: 13px; font-weight: 600; color: var(--ink-light);
+    letter-spacing: .05em; text-transform: uppercase; margin-bottom: 16px;
+  }
+  .price-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 0; border-bottom: 1px solid var(--cream-dark);
+  }
+  .price-item:last-child { border-bottom: none; }
+  .price-label { font-size: 15px; color: var(--ink); font-weight: 400; }
+  .price-badge-wrap { display: flex; align-items: center; gap: 10px; }
+  .price-tag { font-size: 16px; font-weight: 600; color: var(--teal); }
+  .pop-badge {
+    font-size: 10px; font-weight: 600; background: var(--teal); color: white;
+    padding: 2px 8px; border-radius: 50px; text-transform: uppercase; letter-spacing: .04em;
+  }
+  .hero-card-note {
+    margin-top: 16px; padding: 12px; border-radius: var(--radius);
+    background: var(--teal-light); font-size: 13px; color: var(--teal);
+    font-weight: 500;
+  }
+
+  /* ── TRUST BAR ────────────────────────────────────── */
+  .trust-bar {
+    background: var(--teal); padding: 18px 24px;
+  }
+  .trust-bar-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: center;
+    gap: 40px; flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 8px;
+    color: rgba(255,255,255,.9); font-size: 14px; font-weight: 500;
+  }
+  .trust-item-icon { font-size: 18px; }
+
+  /* ── HOW IT WORKS ─────────────────────────────────── */
+  .how-it-works { background: var(--white); }
+  .section-eyebrow {
+    font-size: 12px; font-weight: 600; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1.2; color: var(--ink); margin-bottom: 14px;
+  }
+  .section-sub {
+    font-size: 17px; color: var(--ink-mid); max-width: 520px; line-height: 1.7;
+  }
+  .steps-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 32px; margin-top: 52px;
+  }
+  .step {
+    position: relative; padding: 28px; border-radius: var(--radius-lg);
+    background: var(--cream); border: 1px solid var(--cream-dark);
+    transition: box-shadow .2s;
+  }
+  .step:hover { box-shadow: var(--shadow); }
+  .step-num {
+    font-family: var(--serif); font-size: 3rem; color: var(--teal-light);
+    line-height: 1; margin-bottom: 12px; font-weight: 400;
+    -webkit-text-stroke: 1.5px var(--teal-mid);
+    color: transparent;
+  }
+  .step-title { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+  .step-desc { font-size: 14px; color: var(--ink-mid); line-height: 1.6; }
+
+  /* ── SERVICES ─────────────────────────────────────── */
+  .services { background: var(--cream); }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px; margin-top: 52px;
+  }
+  .service-card {
+    background: var(--white); border-radius: var(--radius-lg);
+    padding: 28px; border: 1px solid var(--cream-dark);
+    transition: all .2s; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: var(--teal); opacity: 0; transition: opacity .2s;
+  }
+  .service-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+  .service-card:hover::before { opacity: 1; }
+  .service-icon { font-size: 32px; margin-bottom: 14px; }
+  .service-name { font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+  .service-desc { font-size: 14px; color: var(--ink-mid); line-height: 1.6; margin-bottom: 16px; }
+  .service-includes { list-style: none; }
+  .service-includes li {
+    font-size: 13px; color: var(--ink-mid); padding: 4px 0;
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .service-includes li::before { content: '✓'; color: var(--teal); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .service-price {
+    margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--cream-dark);
+    font-size: 13px; color: var(--ink-light);
+  }
+  .service-price strong { font-size: 22px; color: var(--teal); margin-right: 4px; }
+
+  /* ── PRICING ──────────────────────────────────────── */
+  .pricing { background: var(--white); }
+  .pricing-table {
+    margin-top: 52px; border-radius: var(--radius-lg);
+    overflow: hidden; border: 1px solid var(--cream-dark); box-shadow: var(--shadow);
+  }
+  .pricing-header {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    background: var(--ink); padding: 16px 24px; gap: 12px;
+  }
+  .pricing-header span {
+    font-size: 12px; font-weight: 600; color: rgba(255,255,255,.7);
+    letter-spacing: .05em; text-transform: uppercase;
+  }
+  .pricing-header span:first-child { color: white; }
+  .pricing-row {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    padding: 16px 24px; gap: 12px; align-items: center;
+    border-bottom: 1px solid var(--cream-dark); transition: background .15s;
+  }
+  .pricing-row:last-child { border-bottom: none; }
+  .pricing-row:hover { background: var(--cream); }
+  .pricing-row:nth-child(even) { background: var(--cream); }
+  .pricing-row:nth-child(even):hover { background: var(--cream-dark); }
+  .pricing-service { font-size: 15px; font-weight: 500; color: var(--ink); }
+  .pricing-service small { display: block; font-size: 12px; color: var(--ink-light); font-weight: 400; margin-top: 2px; }
+  .pricing-amount { font-size: 15px; font-weight: 600; color: var(--teal); }
+  .pricing-note { font-size: 12px; color: var(--ink-light); }
+  .addons-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 12px; margin-top: 32px;
+  }
+  .addon {
+    background: var(--cream); border-radius: var(--radius);
+    padding: 14px; border: 1px solid var(--cream-dark);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px;
+  }
+  .addon-name { color: var(--ink); font-weight: 500; }
+  .addon-price { color: var(--teal); font-weight: 600; }
+
+  /* ── AREAS ────────────────────────────────────────── */
+  .areas { background: var(--cream); }
+  .areas-grid {
+    display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px;
+  }
+  .area-pill {
+    background: var(--white); border: 1px solid var(--cream-dark);
+    border-radius: 50px; padding: 8px 18px;
+    font-size: 14px; font-weight: 500; color: var(--ink-mid);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .area-pill::before { content: '📍'; font-size: 12px; }
+
+  /* ── QUOTE FORM ───────────────────────────────────── */
+  .quote-section { background: var(--teal); padding: 80px 24px; }
+  .quote-inner {
+    max-width: 680px; margin: 0 auto; text-align: center;
+  }
+  .quote-inner .section-eyebrow { color: rgba(255,255,255,.7); }
+  .quote-inner .section-title { color: white; }
+  .quote-inner .section-sub { color: rgba(255,255,255,.85); max-width: 500px; margin: 0 auto 36px; }
+  .quote-btn {
+    background: var(--white); color: var(--teal);
+    font-size: 17px; font-weight: 600; padding: 18px 44px; border-radius: 50px;
+    display: inline-block; transition: all .2s; box-shadow: 0 4px 24px rgba(0,0,0,.15);
+  }
+  .quote-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,.2); }
+  .quote-sub {
+    margin-top: 16px; font-size: 13px; color: rgba(255,255,255,.65);
+  }
+
+  /* ── WHY US ───────────────────────────────────────── */
+  .why { background: var(--white); }
+  .why-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px; margin-top: 52px;
+  }
+  .why-card {
+    padding: 24px; border-radius: var(--radius-lg);
+    border: 1px solid var(--cream-dark); text-align: center;
+    transition: all .2s;
+  }
+  .why-card:hover { background: var(--cream); box-shadow: var(--shadow); }
+  .why-icon { font-size: 36px; margin-bottom: 12px; }
+  .why-title { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+  .why-desc { font-size: 14px; color: var(--ink-mid); line-height: 1.6; }
+
+  /* ── FOOTER ───────────────────────────────────────── */
+  footer {
+    background: var(--ink); padding: 48px 24px 32px; color: rgba(255,255,255,.7);
+  }
+  .footer-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px;
+    padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+  .footer-brand-name {
+    font-family: var(--serif); font-size: 1.3rem; color: white; margin-bottom: 10px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .footer-brand-icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: var(--teal); display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+  .footer-desc { font-size: 14px; line-height: 1.7; max-width: 280px; }
+  .footer-col-title {
+    font-size: 12px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
+    color: rgba(255,255,255,.4); margin-bottom: 16px;
+  }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 10px; }
+  .footer-links a { font-size: 14px; color: rgba(255,255,255,.65); transition: color .2s; }
+  .footer-links a:hover { color: var(--teal-mid); }
+  .footer-bottom {
+    max-width: 1100px; margin: 24px auto 0;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px; font-size: 13px; color: rgba(255,255,255,.35);
+  }
+  .footer-teal { color: var(--teal-mid); }
+
+  /* ── MOBILE ───────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-visual { order: -1; }
+    .nav-links { display: none; }
+    .pricing-header, .pricing-row { grid-template-columns: 1fr 1fr; }
+    .pricing-header span:nth-child(n+3),
+    .pricing-row > *:nth-child(n+3) { display: none; }
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    .trust-bar-inner { gap: 20px; }
+    .section { padding: 56px 0; }
+  }
+
+  /* ── ANIMATIONS ───────────────────────────────────── */
+  @media (prefers-reduced-motion: no-preference) {
+    .service-card, .step, .why-card { transition: all .25s cubic-bezier(.2,.8,.2,1); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">🧹</div>
+      Fresh Start Cleaning
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#areas">Areas</a></li>
+      <li><a href="#why">Why Us</a></li>
+    </ul>
+    <a href="#quote" class="btn btn-primary nav-cta">Get a Free Quote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Charlotte, NC · Mint Hill · Matthews</div>
+      <h1>Your home, <em>spotless</em>.<br>Every single time.</h1>
+      <p class="hero-sub">Fresh Start Cleaning brings professional, reliable residential cleaning to Charlotte and surrounding areas. We handle the details — you enjoy the result.</p>
+      <div class="hero-actions">
+        <a href="#quote" class="btn btn-primary btn-lg">Get My Free Quote</a>
+        <a href="#services" class="btn btn-outline btn-lg">See Services</a>
+      </div>
+      <div class="hero-trust">
+        <span>✓ Fully insured</span>
+        <div class="hero-trust-dot"></div>
+        <span>✓ Background-checked team</span>
+        <div class="hero-trust-dot"></div>
+        <span>✓ 100% satisfaction</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <p class="hero-card-title">Starting prices</p>
+      <div class="price-item">
+        <span class="price-label">1 Bedroom</span>
+        <div class="price-badge-wrap">
+          <span class="price-tag">from $95</span>
+        </div>
+      </div>
+      <div class="price-item">
+        <span class="price-label">2 Bedroom</span>
+        <div class="price-badge-wrap">
+          <span class="price-tag">from $130</span>
+          <span class="pop-badge">Popular</span>
+        </div>
+      </div>
+      <div class="price-item">
+        <span class="price-label">3 Bedroom</span>
+        <div class="price-badge-wrap">
+          <span class="price-tag">from $165</span>
+        </div>
+      </div>
+      <div class="price-item">
+        <span class="price-label">Move-Out Clean</span>
+        <div class="price-badge-wrap">
+          <span class="price-tag">from $185</span>
+        </div>
+      </div>
+      <div class="hero-card-note">📅 Bi-weekly recurring · Weekly discounts available</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><span class="trust-item-icon">🛡️</span> Fully insured & bonded</div>
+    <div class="trust-item"><span class="trust-item-icon">✅</span> Background-checked team</div>
+    <div class="trust-item"><span class="trust-item-icon">📸</span> Before & after photos every job</div>
+    <div class="trust-item"><span class="trust-item-icon">💬</span> Response within 1 hour</div>
+    <div class="trust-item"><span class="trust-item-icon">🔄</span> Satisfaction guaranteed</div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works section">
+  <div class="container">
+    <p class="section-eyebrow">Simple process</p>
+    <h2 class="section-title">Booking is effortless</h2>
+    <p class="section-sub">We made it easy on purpose. No back-and-forth, no surprises — just a clean home on your schedule.</p>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Request a quote</div>
+        <p class="step-desc">Fill out our quick form with your home details. Takes less than 2 minutes. No commitment required.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Get your price</div>
+        <p class="step-desc">We'll text or call you back within the hour with a flat-rate quote. No hidden fees, ever.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">We show up & clean</div>
+        <p class="step-desc">Our professional team arrives on time, cleans thoroughly, and sends before/after photos when done.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-title">You enjoy the result</div>
+        <p class="step-desc">Come home to a spotless space. Pay easily by Zelle, Square, or card. No awkward cash handoffs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services section" id="services">
+  <div class="container">
+    <p class="section-eyebrow">What we offer</p>
+    <h2 class="section-title">Services built around your life</h2>
+    <p class="section-sub">Whether you need a weekly refresh or a full move-out deep clean — we've got you covered.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🏠</div>
+        <div class="service-name">Recurring Home Cleaning</div>
+        <p class="service-desc">Consistent, reliable cleaning on your schedule. Weekly, bi-weekly, or monthly — your home stays fresh without you lifting a finger.</p>
+        <ul class="service-includes">
+          <li>Full kitchen clean & sanitize</li>
+          <li>Bathrooms scrubbed & disinfected</li>
+          <li>All floors vacuumed & mopped</li>
+          <li>Dusting throughout</li>
+          <li>Trash emptied in all rooms</li>
+        </ul>
+        <div class="service-price">Starting at <strong>$95</strong> per visit</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📦</div>
+        <div class="service-name">Move-Out Deep Clean</div>
+        <p class="service-desc">Leave your old place spotless and get your deposit back. We go deep so you don't have to come back.</p>
+        <ul class="service-includes">
+          <li>Inside all cabinets & drawers</li>
+          <li>Inside refrigerator & oven</li>
+          <li>All baseboards wiped down</li>
+          <li>Interior windows & sills</li>
+          <li>Full scope — move-out ready</li>
+        </ul>
+        <div class="service-price">Starting at <strong>$185</strong> flat rate</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">✨</div>
+        <div class="service-name">First-Time / Deep Clean</div>
+        <p class="service-desc">New client? Starting fresh? We'll get your home to a baseline standard you'll love — then keep it there with recurring service.</p>
+        <ul class="service-includes">
+          <li>Top-to-bottom thorough clean</li>
+          <li>Hard-to-reach areas tackled</li>
+          <li>Perfect starting point for recurring</li>
+          <li>Full home assessment included</li>
+        </ul>
+        <div class="service-price">Starting at <strong>$160</strong> flat rate</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏢</div>
+        <div class="service-name">STR / Airbnb Turnover</div>
+        <p class="service-desc">Fast, reliable turnovers between guests. We know your reviews depend on a spotless space — we treat every turnover like our name is on the line.</p>
+        <ul class="service-includes">
+          <li>Full clean between every guest</li>
+          <li>Linen change (if provided)</li>
+          <li>Before & after photos every time</li>
+          <li>Quick turnaround scheduling</li>
+        </ul>
+        <div class="service-price">Starting at <strong>$85</strong> per turnover</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing section" id="pricing">
+  <div class="container">
+    <p class="section-eyebrow">Transparent pricing</p>
+    <h2 class="section-title">Flat rates. No surprises.</h2>
+    <p class="section-sub">We charge by home size, not by the hour. You always know exactly what you'll pay before we show up.</p>
+    <div class="pricing-table">
+      <div class="pricing-header">
+        <span>Service</span>
+        <span>Weekly</span>
+        <span>Bi-Weekly</span>
+        <span>Monthly</span>
+        <span>One-Time</span>
+      </div>
+      <div class="pricing-row">
+        <div class="pricing-service">1 Bed / 1 Bath<small>~1.5–2 hrs</small></div>
+        <div class="pricing-amount">$86</div>
+        <div class="pricing-amount">$95</div>
+        <div class="pricing-amount">$110</div>
+        <div class="pricing-amount">$160</div>
+      </div>
+      <div class="pricing-row">
+        <div class="pricing-service">2 Bed / 1–2 Bath<small>~2–3 hrs · Most popular</small></div>
+        <div class="pricing-amount">$117</div>
+        <div class="pricing-amount">$130</div>
+        <div class="pricing-amount">$150</div>
+        <div class="pricing-amount">$210</div>
+      </div>
+      <div class="pricing-row">
+        <div class="pricing-service">3 Bed / 2 Bath<small>~3–4 hrs</small></div>
+        <div class="pricing-amount">$149</div>
+        <div class="pricing-amount">$165</div>
+        <div class="pricing-amount">$190</div>
+        <div class="pricing-amount">$275</div>
+      </div>
+      <div class="pricing-row">
+        <div class="pricing-service">Move-Out Clean — 1 Bed<small>Full deep clean, move-out ready</small></div>
+        <div class="pricing-amount">—</div>
+        <div class="pricing-amount">—</div>
+        <div class="pricing-amount">—</div>
+        <div class="pricing-amount">$185</div>
+      </div>
+      <div class="pricing-row">
+        <div class="pricing-service">Move-Out Clean — 2 Bed<small>Full deep clean, move-out ready</small></div>
+        <div class="pricing-amount">—</div>
+        <div class="pricing-amount">—</div>
+        <div class="pricing-amount">—</div>
+        <div class="pricing-amount">$260</div>
+      </div>
+      <div class="pricing-row">
+        <div class="pricing-service">Move-Out Clean — 3 Bed<small>Full deep clean, move-out ready</small></div>
+        <div class="pricing-amount">—</div>
+        <div class="pricing-amount">—</div>
+        <div class="pricing-amount">—</div>
+        <div class="pricing-amount">$350</div>
+      </div>
+    </div>
+
+    <p style="font-size:13px;color:var(--ink-light);margin-top:12px">* A $50–75 condition surcharge may apply for heavy soil, excessive pet hair, or homes not swept prior to arrival. We'll always let you know before we start.</p>
+
+    <h3 style="font-family:var(--serif);font-size:1.4rem;color:var(--ink);margin:40px 0 8px">Add-on services</h3>
+    <p style="font-size:15px;color:var(--ink-mid);margin-bottom:0">Customize your clean with any of the following add-ons:</p>
+    <div class="addons-grid">
+      <div class="addon"><span class="addon-name">Inside refrigerator</span><span class="addon-price">+$45</span></div>
+      <div class="addon"><span class="addon-name">Inside oven</span><span class="addon-price">+$45</span></div>
+      <div class="addon"><span class="addon-name">Interior windows</span><span class="addon-price">+$10/window</span></div>
+      <div class="addon"><span class="addon-name">Laundry (wash & dry)</span><span class="addon-price">+$25/load</span></div>
+      <div class="addon"><span class="addon-name">Baseboard wipe-down</span><span class="addon-price">+$35</span></div>
+      <div class="addon"><span class="addon-name">Cabinet interiors</span><span class="addon-price">+$50</span></div>
+      <div class="addon"><span class="addon-name">Patio / balcony sweep</span><span class="addon-price">+$25</span></div>
+      <div class="addon"><span class="addon-name">Pet hair deep clean</span><span class="addon-price">+$30</span></div>
+      <div class="addon"><span class="addon-name">Same-day / rush booking</span><span class="addon-price">+$40</span></div>
+      <div class="addon"><span class="addon-name">Eco / green products</span><span class="addon-price">+$15</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="areas section-sm" id="areas">
+  <div class="container">
+    <p class="section-eyebrow">Service area</p>
+    <h2 class="section-title">Serving Charlotte & surrounding areas</h2>
+    <div class="areas-grid">
+      <div class="area-pill">Charlotte</div>
+      <div class="area-pill">Mint Hill</div>
+      <div class="area-pill">Matthews</div>
+      <div class="area-pill">South Charlotte</div>
+      <div class="area-pill">Ballantyne</div>
+      <div class="area-pill">SouthPark</div>
+      <div class="area-pill">Myers Park</div>
+      <div class="area-pill">Eastover</div>
+      <div class="area-pill">Cotswold</div>
+      <div class="area-pill">Dilworth</div>
+      <div class="area-pill">Concord</div>
+      <div class="area-pill">Harrisburg</div>
+    </div>
+    <p style="margin-top:16px;font-size:14px;color:var(--ink-light)">Not sure if we cover your area? <a href="#quote" style="color:var(--teal);font-weight:500">Send us a message</a> — we'll let you know.</p>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why section" id="why">
+  <div class="container">
+    <p class="section-eyebrow">Why Fresh Start</p>
+    <h2 class="section-title">Clean you can count on</h2>
+    <p class="section-sub">We built this business around one thing — making the experience seamless and the results consistent, every single time.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">📸</div>
+        <div class="why-title">Before & after photos</div>
+        <p class="why-desc">Every job is documented with photos before and after. You always know exactly what was done.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🛡️</div>
+        <div class="why-title">Fully insured & bonded</div>
+        <p class="why-desc">We're insured so you're protected. Peace of mind is part of the service.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <div class="why-title">Fast response</div>
+        <p class="why-desc">We respond to every quote request within the hour. No waiting days for a reply.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">✅</div>
+        <div class="why-title">Background-checked team</div>
+        <p class="why-desc">Every cleaner is background-checked and vetted. Your home is in trustworthy hands.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔄</div>
+        <div class="why-title">Satisfaction guaranteed</div>
+        <p class="why-desc">Not happy with something? We'll make it right — no questions asked.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📱</div>
+        <div class="why-title">Easy communication</div>
+        <p class="why-desc">Text, call, or message us. We're easy to reach and even easier to work with.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE CTA -->
+<section class="quote-section" id="quote">
+  <div class="quote-inner">
+    <p class="section-eyebrow">Get started today</p>
+    <h2 class="section-title">Ready for a fresh start?</h2>
+    <p class="section-sub">Fill out our quick quote form and we'll get back to you within the hour with pricing. No commitment, no pressure.</p>
+    <!-- REPLACE THE HREF BELOW WITH YOUR ACTUAL GOOGLE FORM LINK -->
+    <a href="YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" class="quote-btn">Get My Free Quote →</a>
+    <p class="quote-sub">Takes less than 2 minutes · No commitment required · Response within 1 hour</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-name">
+        <div class="footer-brand-icon">🧹</div>
+        Fresh Start Cleaning
+      </div>
+      <p class="footer-desc">Professional residential cleaning services in Charlotte, NC. Seamless experience, spotless results, every time.</p>
+    </div>
+    <div>
+      <p class="footer-col-title">Services</p>
+      <ul class="footer-links">
+        <li><a href="#services">Recurring Cleans</a></li>
+        <li><a href="#services">Move-Out Cleans</a></li>
+        <li><a href="#services">Deep Cleans</a></li>
+        <li><a href="#services">STR Turnovers</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Contact</p>
+      <ul class="footer-links">
+        <li><a href="mailto:freshstartcleaningclt@gmail.com">freshstartcleaningclt@gmail.com</a></li>
+        <li><a href="tel:+17045550000">YOUR GOOGLE VOICE NUMBER</a></li>
+        <li><a href="#quote">Get a Free Quote</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Fresh Start Cleaning LLC · Charlotte, NC · All rights reserved.</span>
+    <span>Insured · Background-checked · <span class="footer-teal">Charlotte's fresh start</span></span>
+  </div>
+</footer>
+
+</body>
+</html>
